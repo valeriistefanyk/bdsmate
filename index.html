@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="preloader">
+        <div class="preloader__image"></div>
+    </div>
+    <div class="container">
+        <video class="image">
+            <source src="videos/message.mp4" type="video/mp4">
+            <source src="videos/message.ogg" type="video/ogg">
+            Походу не работает видео в этом браузере
+        </video>
+        <img class="image" src="images/long_images/long_1.jpg" alt="Короче длинная картинка 1">
+        <img class="image" src="images/gifs/pivo.gif" alt="Гифка когда пить пиво">
+        <img class="image" src="images/long_images/long_2.jpg" alt="Короче длинная картинка 2">
+        <img class="image" src="images/gifs/sport_1.gif" alt="Гифка на спорте 1">
+        <img class="image" src="images/gifs/sport_2.gif" alt="Гифка на спорте 2">
+        <img class="image" src="images/long_images/long_3.jpg" alt="Короче длинная картинка 3">
+        <img class="image" src="images/gifs/hookah_master.gif" alt="Гифка кальян-про-масте">
+        <img class="image" src="images/long_images/long_4.jpg" alt="Короче длинная картинка 4">
+        <img class="image" src="images/gifs/goup.gif" alt="Гифка едем вверх по социальной лестнице">
+        <img class="image" src="images/long_images/long_5.jpg" alt="Короче длинная картинка 5">
+        <img class="image" src="images/gifs/mage_1.gif" alt="Гифка с магом 1">
+        <img class="image" src="images/gifs/mage_2.gif" alt="Гифка с магом 2">
+        <img class="image" src="images/long_images/long_6.jpg" alt="Короче длинная картинка 6">
+        <video class="image">
+            <source src="videos/flexing.mp4" type="video/mp4">
+            <source src="videos/flexing.ogg" type="video/ogg">
+            Походу не работает видео в этом браузере
+          </video>
+    </div>
+    <div class="pk">
+        <h1 style="text-align: center; font-size: 60px; padding-top: 10%;">ТОЛЬКО НА АЙФОНАХ</h1>
+    </div>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+       }
+    body{
+        background-color: black;
+    }
+
+    .preloader {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background: #000;
+        z-index: 1001;
+      }
+      
+      .preloader__image {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        width: 64px;
+        height: 64px;
+        margin-top: -32px;
+        margin-left: -32px;
+        background: url('images/preloader.gif') no-repeat 50% 50%;
+      }
+      
+      .loaded_hiding .preloader {
+        transition: 0.3s opacity;
+        opacity: 0;
+      }
+      
+      .loaded .preloader {
+        display: none;
+      }
+
+
+
+
+    .container{
+        display: none;
+    }
+    .pk{
+        width: 100vw;
+        height: 100vh;
+        color: white;
+    }
+    @media screen and (max-width: 700px) {
+        .container {
+            display: inline;
+        }
+        .image{
+            width: 100%;
+        }
+        .pk{
+            display: none !important;
+        }
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/is-in-viewport/3.0.4/isInViewport.min.js"></script>
+<script>
+    
+    window.onload = function () {
+        document.body.classList.add('loaded_hiding');
+        window.setTimeout(function () {
+          document.body.classList.add('loaded');
+          document.body.classList.remove('loaded_hiding');
+        }, 500);
+      }
+    
+    $(window).scroll(function() {
+
+        $('video').each(function(){
+            if ($(this).is(":in-viewport")) {
+                $(this)[0].play();
+            } else {
+                $(this)[0].pause();
+            }
+        })
+
+    });
+    
+</script>
+</html>
+
+
+
